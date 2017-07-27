@@ -10,7 +10,10 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 
 #### 快速接入
 
-1. 添加项目 module.
+1. 添加项目 module 或引入依赖
+   ```java
+       compile 'com.javalong:retrofit-rxjava:1.0.0'
+   ```
 
 2. 在使用之前调用代码初始化
    ```java
