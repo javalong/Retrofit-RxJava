@@ -166,14 +166,15 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     ```
     已经在`TWJavaCallAdapterFactory.java`中全局添加
 
+
+
 ####Demo截图
 
 
-![Screenshot_20170727-113149.png](http://upload-images.jianshu.io/upload_images/4241874-b55bbc68056ee69b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![选择请求类型](http://upload-images.jianshu.io/upload_images/4241874-b55bbc68056ee69b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/540)
 
 
-![Screenshot_20170727-113212.png](http://upload-images.jianshu.io/upload_images/4241874-8f3e97f38c9e7eac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![post请求对象](http://upload-images.jianshu.io/upload_images/4241874-8f3e97f38c9e7eac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/540)
 
 
-![Screenshot_20170727-113227.png](http://upload-images.jianshu.io/upload_images/4241874-823dacb1be2405b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![post请求int](http://upload-images.jianshu.io/upload_images/4241874-823dacb1be2405b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/540)
