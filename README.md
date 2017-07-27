@@ -157,7 +157,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     1. 自定义 onSuccess回调。
     2. 支持用户对某一类errorCode做统一处理在 onFailed中
     3. 自定义UserAgent
-    
+
 10. 优化链式结构
 
     不需要在请求中都添加
@@ -165,3 +165,15 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
         subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     ```
     已经在`TWJavaCallAdapterFactory.java`中全局添加
+
+####Demo截图
+
+
+![Screenshot_20170727-113149.png](http://upload-images.jianshu.io/upload_images/4241874-b55bbc68056ee69b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+![Screenshot_20170727-113212.png](http://upload-images.jianshu.io/upload_images/4241874-8f3e97f38c9e7eac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+![Screenshot_20170727-113227.png](http://upload-images.jianshu.io/upload_images/4241874-823dacb1be2405b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
