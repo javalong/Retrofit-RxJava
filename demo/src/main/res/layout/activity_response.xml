@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16px">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20px"
+            android:text="请求地址：" />
+
+        <TextView
+            android:id="@+id/tvRequestUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_border"
+            android:padding="40px"
+            android:text="请求地址" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:padding="20px"
+            android:text="返回内容：" />
+
+        <TextView
+            android:id="@+id/tvResponseString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_border"
+            android:padding="40px"
+            android:text="请稍候，正在请求~" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:padding="20px"
+            android:text="转化后内容：" />
+
+        <TextView
+            android:id="@+id/tvConvert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/content_border"
+            android:padding="40px"
+            android:text="请稍候，正在请求~" />
+    </LinearLayout>
+</ScrollView>
