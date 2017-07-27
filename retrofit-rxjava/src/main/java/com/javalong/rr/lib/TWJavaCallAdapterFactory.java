@@ -1,4 +1,4 @@
-package com.javalong.retrofit.lib;
+package com.javalong.rr.lib;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;

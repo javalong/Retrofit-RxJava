@@ -1,4 +1,4 @@
-package com.javalong.retrofit.lib;
+package com.javalong.rr.lib;
 
 import org.json.JSONException;
 import org.json.JSONObject;

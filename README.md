@@ -72,6 +72,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     具体实现：
 
     `TWInterceptor.java`
+
     ```java
 
        ...
@@ -127,10 +128,13 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 8. 支持自定义OkHttpClient
 
     初始化时,可以调用
+
     ```java
        RetrofitHelper.getInstance().init(this,baseUrl,okHttpClient);
     ```
+
     默认OkHttpClient为
+
     ```java
         Cache cache = new Cache(new File(mContext.getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
         mOkHttpClient = new OkHttpClient.Builder().

@@ -1,4 +1,4 @@
-package com.javalong.retrofit.lib;
+package com.javalong.rr.lib;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;

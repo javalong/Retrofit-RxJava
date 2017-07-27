@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.javalong.retrofit.api.RetrofitHelper;
+import com.javalong.rr.api.RetrofitHelper;
 import com.javalong.retrofit_rxjava.api.ServerApi;
 import com.javalong.retrofit_rxjava.bean.TestBean;
 

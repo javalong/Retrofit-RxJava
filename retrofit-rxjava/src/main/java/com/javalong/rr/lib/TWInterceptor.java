@@ -1,4 +1,4 @@
-package com.javalong.retrofit.lib;
+package com.javalong.rr.lib;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

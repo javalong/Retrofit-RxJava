@@ -1,11 +1,11 @@
-package com.javalong.retrofit.api;
+package com.javalong.rr.api;
 
 
 import android.content.Context;
 
-import com.javalong.retrofit.lib.TWGsonConverterFactory;
-import com.javalong.retrofit.lib.TWInterceptor;
-import com.javalong.retrofit.lib.TWJavaCallAdapterFactory;
+import com.javalong.rr.lib.TWGsonConverterFactory;
+import com.javalong.rr.lib.TWInterceptor;
+import com.javalong.rr.lib.TWJavaCallAdapterFactory;
 
 import java.io.File;
 import java.security.KeyManagementException;

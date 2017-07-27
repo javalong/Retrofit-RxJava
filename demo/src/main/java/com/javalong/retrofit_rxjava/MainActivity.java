@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.javalong.retrofit.api.RetrofitHelper;
+import com.javalong.rr.api.RetrofitHelper;
 import com.javalong.retrofit_rxjava.api.ServerApi;
 
 public class MainActivity extends AppCompatActivity {
