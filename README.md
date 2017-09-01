@@ -7,6 +7,13 @@
 blog:http://www.jianshu.com/p/17e3e3102c1f
 
 ***
+#### 新版本特性
+* 添加单图／多图上传demo
+* 添加上传图片进度接口
+* demo gif
+![upload image](https://github.com/javalong/Retrofit-RxJava/blob/master/images/upload_image_demo.gif)
+
+***
 #### 快速接入
 
 1. 添加项目 module 或引入依赖
@@ -174,7 +181,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     已经在`TWJavaCallAdapterFactory.java`中全局添加
 
 ***
-#### [更新日志](https://github.com/javalong/Retrofit-RxJava/Update.md)
+#### [更新日志](https://github.com/javalong/Retrofit-RxJava/blob/master/UPDATE.md)
 ***
 #### 感谢（Thanks）
 **[CircleProgress](https://github.com/lzyzsd/CircleProgress)** 进度条
