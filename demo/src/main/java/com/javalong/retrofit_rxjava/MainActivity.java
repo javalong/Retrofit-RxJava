@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CrashHandler.getInstance().init(this);
         setContentView(R.layout.activity_main);
         RetrofitHelper.getInstance().init(this,"http://rap.kongge.com/mockjsdata/37/");
         RetrofitHelper.getInstance().registerApi(ServerApi.class);
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
                     case 7:
                         btRequest.setText("postFailed");
                         break;
+                    case 8:
+                        btRequest.setText("postImage");
+                        break;
                 }
                 btRequest.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public int getItemCount() {
-                return 8;
+                return 9;
             }
         });
     }
@@ -75,9 +79,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void requestDataByIndex(int position) {
-        Intent intent = new Intent();
-        intent.setClass(this,ResponseActivity.class);
-        intent.putExtra("position",position);
-        startActivity(intent);
+        if(position<8) {
+            Intent intent = new Intent();
+            intent.setClass(this, ResponseActivity.class);
+            intent.putExtra("position", position);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent();
+            intent.setClass(this, ImageUploadActivity.class);
+            startActivity(intent);
+        }
     }
 }

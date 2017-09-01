@@ -1,13 +1,12 @@
 # Retrofit-RxJava
-
+***
 #### 项目简介
 
 采用Retrofit+RxJava作为Http框架
 
 blog:http://www.jianshu.com/p/17e3e3102c1f
 
-
-
+***
 #### 快速接入
 
 1. 添加项目 module 或引入依赖
@@ -37,6 +36,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 
     参考demo
 
+***
 
 #### 功能介绍
 
@@ -173,3 +173,9 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     ```
     已经在`TWJavaCallAdapterFactory.java`中全局添加
 
+***
+#### [更新日志](https://github.com/javalong/Retrofit-RxJava/Update.md)
+***
+#### 感谢（Thanks）
+**[CircleProgress](https://github.com/lzyzsd/CircleProgress)** 进度条
+**[RxGalleryFinal](https://github.com/FinalTeam/RxGalleryFinal)** 相册

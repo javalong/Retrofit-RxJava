@@ -6,12 +6,17 @@ import com.javalong.retrofit_rxjava.bean.TestBean;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -24,16 +29,17 @@ public interface ServerApi {
 
     /**
      * ==================通用的=======================
+     *
      * @param origion 是否不做任何处理，true 就直接返回原始字符串
      */
     @GET("{requestUrl}")
-    Observable<String> get(@Path("requestUrl") String requestUrl, @Header("origion")boolean origion);
+    Observable<String> get(@Path("requestUrl") String requestUrl, @Header("origion") boolean origion);
 
     @GET("{requestUrl}")
     Observable<String> get(@Path("requestUrl") String requestUrl);
 
     @POST("{requestUrl}")
-    Observable<String> post(@Path("requestUrl") String requestUrl, @Header("origion")boolean origion);
+    Observable<String> post(@Path("requestUrl") String requestUrl, @Header("origion") boolean origion);
 
     @POST("{requestUrl}")
     Observable<String> post(@Path("requestUrl") String requestUrl);
@@ -74,5 +80,14 @@ public interface ServerApi {
     @POST("postFailed")
     Observable<TestBean> postFailed();
 
+    /**
+     * 图片上传
+     */
+    @Multipart
+    @POST("postSingleImage")
+    Observable<Boolean> postSingleImage(@Part MultipartBody.Part img);
 
+    @Multipart
+    @POST("postMultiImage")
+    Observable<Boolean> postMultiImage(@PartMap Map<String, RequestBody> imgs);
 }

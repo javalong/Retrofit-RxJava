@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import com.javalong.rr.api.RetrofitHelper;
 import com.javalong.retrofit_rxjava.api.ServerApi;
 import com.javalong.retrofit_rxjava.bean.TestBean;
+import com.javalong.rr.api.RetrofitHelper;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +20,7 @@ import rx.Observer;
  */
 
 public class ResponseActivity extends AppCompatActivity {
+    public final static String TAG = "ResponseActivity";
     protected TextView tvResponseString;
     protected TextView tvConvert;
     protected TextView tvRequestUrl;
