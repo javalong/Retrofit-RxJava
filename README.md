@@ -10,7 +10,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 #### 新版本特性
 * 添加单图／多图上传demo
 * 添加上传图片进度接口
-* demo gif
+
 ![upload image](https://github.com/javalong/Retrofit-RxJava/blob/master/images/upload_image_demo.gif)
 
 ***
@@ -18,7 +18,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 
 1. 添加项目 module 或引入依赖
    ```java
-       compile 'com.javalong:retrofit-rxjava:1.0.0'
+       compile 'com.javalong:retrofit-rxjava:1.1.0'
    ```
 
 2. 在使用之前调用代码初始化
@@ -184,5 +184,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 #### [更新日志](https://github.com/javalong/Retrofit-RxJava/blob/master/UPDATE.md)
 ***
 #### 感谢（Thanks）
+
 **[CircleProgress](https://github.com/lzyzsd/CircleProgress)** 进度条
+
 **[RxGalleryFinal](https://github.com/FinalTeam/RxGalleryFinal)** 相册
