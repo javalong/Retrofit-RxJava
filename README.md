@@ -8,10 +8,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 
 ***
 #### 新版本特性
-* 添加单图／多图上传demo
-* 添加上传图片进度接口
-
-![upload image](https://github.com/javalong/Retrofit-RxJava/blob/master/images/upload_image_demo.gif)
+* 添加下载文件
 
 ***
 #### 快速接入
