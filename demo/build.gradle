@@ -33,5 +33,5 @@ dependencies {
     compile 'cn.finalteam.rxgalleryfinal:library:1.0.9'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
-    compile 'com.javalong:retrofit-rxjava:1.1.0'
+    compile project(':retrofit-rxjava')
 }

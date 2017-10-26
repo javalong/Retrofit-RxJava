@@ -1,6 +1,8 @@
 package com.javalong.retrofit_rxjava.api;
 
 
+import android.support.annotation.StringRes;
+
 import com.javalong.retrofit_rxjava.bean.TestBean;
 
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Map;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -18,6 +21,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
+import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -90,4 +95,12 @@ public interface ServerApi {
     @Multipart
     @POST("postMultiImage")
     Observable<Boolean> postMultiImage(@PartMap Map<String, RequestBody> imgs);
+
+
+    /**
+     * 文件下载
+     */
+    @Streaming
+    @GET
+    Observable<ResponseBody> download(@Url String url);
 }

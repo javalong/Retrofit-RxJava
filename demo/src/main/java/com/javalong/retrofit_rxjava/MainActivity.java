@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                     case 8:
                         btRequest.setText("postImage");
                         break;
+                    case 9:
+                        btRequest.setText("downloadFile");
+                        break;
                 }
                 btRequest.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public int getItemCount() {
-                return 9;
+                return 10;
             }
         });
     }
@@ -84,9 +87,13 @@ public class MainActivity extends AppCompatActivity {
             intent.setClass(this, ResponseActivity.class);
             intent.putExtra("position", position);
             startActivity(intent);
-        }else{
+        }else if(position==8){
             Intent intent = new Intent();
             intent.setClass(this, ImageUploadActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent();
+            intent.setClass(this, DownloadActivity.class);
             startActivity(intent);
         }
     }

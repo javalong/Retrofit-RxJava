@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -58,7 +59,15 @@ public class TWInterceptor implements Interceptor {
         String jsonString = null;
         try {
             BufferedSource bufferedSource = originalResponse.body().source();
-            jsonString = bufferedSource.readString(Charset.forName("utf-8"));
+            MediaType contentType = originalResponse.body().contentType();
+            if ("octet-stream".equals(contentType.subtype())) {
+                //请求文件，就直接返回ResponseBody;
+                return originalResponse.newBuilder().
+                        body(ResponseBody.create(contentType, originalResponse.body().contentLength(), bufferedSource)).
+                        build();
+            } else {
+                jsonString = bufferedSource.readString(Charset.forName("utf-8"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

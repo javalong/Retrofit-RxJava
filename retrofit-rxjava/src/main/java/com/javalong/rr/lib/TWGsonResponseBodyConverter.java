@@ -27,6 +27,9 @@ public class TWGsonResponseBodyConverter<T> implements Converter<ResponseBody, T
 
     @Override
     public T convert(ResponseBody value) throws IOException {
+        if ("ResponseBody".equals(typeToken.getRawType().getSimpleName())) {
+            return (T) value;
+        }
         Object obj = checkBasicType(value);
         if (obj != null) return (T) obj;
         JsonReader jsonReader = gson.newJsonReader(value.charStream());
