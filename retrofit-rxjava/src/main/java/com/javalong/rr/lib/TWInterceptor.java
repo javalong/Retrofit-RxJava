@@ -25,7 +25,7 @@ public class TWInterceptor implements Interceptor {
         /**
          * 统一设置请求头
          */
-        Request newRequest = createRequestHeader(request.newBuilder()).build();
+        Request newRequest = dealRequestData(createRequestHeader(request.newBuilder()).build());
         Response originalResponse = chain.proceed(newRequest);
         //如果是重定向，那么就执行重定向后返回数据。
         if (originalResponse.isRedirect()) {
@@ -35,6 +35,10 @@ public class TWInterceptor implements Interceptor {
         String origion = newRequest.header("origion");
         originalResponse = dealResponseData(Boolean.parseBoolean(origion), originalResponse);
         return originalResponse;
+    }
+
+    protected Request dealRequestData(Request newRequest) {
+        return newRequest;
     }
 
     /**
