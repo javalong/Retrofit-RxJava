@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".DownloadActivity">
         </activity>
+        <activity android:name=".MockDataActivity">
+        </activity>
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
             android:screenOrientation="portrait"

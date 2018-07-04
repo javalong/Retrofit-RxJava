@@ -10,6 +10,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface MOCK {
     String value() default "";
-
     boolean enable() default true;
 }

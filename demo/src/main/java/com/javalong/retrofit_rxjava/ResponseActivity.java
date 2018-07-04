@@ -13,7 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import rx.Observer;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * Created by 令狐 on 17/7/26.
@@ -37,8 +39,15 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).get("getSuccess",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
                             }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+
                             @Override
                             public void onError(Throwable e) {
                                 tvResponseString.setText(e.getMessage());
@@ -51,7 +60,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).getSuccess()
                         .subscribe(new Observer<TestBean>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -68,7 +83,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postSuccess",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -82,7 +103,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postSuccess()
                         .subscribe(new Observer<TestBean>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -99,7 +126,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postStringSuccess",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -113,7 +146,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postStringSuccess()
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -130,7 +169,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postIntSuccess",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -144,7 +189,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postIntSuccess()
                         .subscribe(new Observer<Integer>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -161,7 +212,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postBoolSuccess",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -175,7 +232,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postBoolSuccess()
                         .subscribe(new Observer<Boolean>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -192,7 +255,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postListSuccess",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -206,7 +275,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postListSuccess()
                         .subscribe(new Observer<List<TestBean>>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -225,7 +300,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postSuccessWithParam",paramMap)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -239,7 +320,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postSuccessWithParam("test")
                         .subscribe(new Observer<TestBean>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -256,7 +343,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).post("postFailed",true)
                         .subscribe(new Observer<String>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {
@@ -270,7 +363,13 @@ public class ResponseActivity extends AppCompatActivity {
                 RetrofitHelper.getInstance().getApi(ServerApi.class).postFailed()
                         .subscribe(new Observer<TestBean>() {
                             @Override
-                            public void onCompleted() {
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
                             }
                             @Override
                             public void onError(Throwable e) {

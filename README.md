@@ -8,14 +8,30 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
 
 ***
 #### 新版本特性
-* 添加下载文件
+
+添加MOCK使用方式
+
+ https://www.jianshu.com/p/ef445d5e9be0
 
 ***
 #### 快速接入
 
 1. 添加项目 module 或引入依赖
-   ```java
-       compile 'com.javalong:retrofit-rxjava:1.1.0'
+
+    Add it in your root build.gradle at the end of repositories:
+    ```gradle
+        allprojects {
+		    repositories {
+			    ...
+			    maven { url 'https://jitpack.io' }
+		    }
+	    }
+    ```
+    Step 2. Add the dependency
+   ```gradle
+      dependencies {
+      	        implementation 'com.github.javalong:Retrofit-RxJava:v2.0.1'
+      	}
    ```
 
 2. 在使用之前调用代码初始化
@@ -169,14 +185,9 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     2. 支持用户对某一类errorCode做统一处理在 onFailed中
     3. 自定义UserAgent
 
-10. 优化链式结构
+10. 添加MOCK使用方式
 
-    不需要在请求中都添加
-    ```java
-        subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-    ```
-    已经在`TWJavaCallAdapterFactory.java`中全局添加
-
+    https://www.jianshu.com/p/ef445d5e9be0
 ***
 #### [更新日志](https://github.com/javalong/Retrofit-RxJava/blob/master/UPDATE.md)
 ***

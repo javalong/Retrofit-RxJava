@@ -3,6 +3,7 @@ package com.javalong.rr.api;
 
 import android.content.Context;
 
+import com.javalong.rr.lib.BuildConfig;
 import com.javalong.rr.lib.TWGsonConverterFactory;
 import com.javalong.rr.lib.TWInterceptor;
 

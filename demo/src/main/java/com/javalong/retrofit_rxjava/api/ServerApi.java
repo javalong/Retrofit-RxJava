@@ -3,11 +3,15 @@ package com.javalong.retrofit_rxjava.api;
 
 import android.support.annotation.StringRes;
 
+import com.javalong.retrofit_rxjava.bean.MockBean;
 import com.javalong.retrofit_rxjava.bean.TestBean;
+import com.javalong.rr.annotation.MOCK;
 
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -23,7 +27,6 @@ import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
-import rx.Observable;
 
 /**
  * Created by javalong on 16-11-11.
@@ -103,4 +106,19 @@ public interface ServerApi {
     @Streaming
     @GET
     Observable<ResponseBody> download(@Url String url);
+
+    /**
+     * MOCK
+     */
+    @MOCK(value = "", enable = false)
+    @GET("http://mdev.wecards.cn/api/zhk/1.0/newTicket/newTicket")
+    Observable<String> mock1();
+
+    @MOCK("mockdata.json")
+    @GET("http://mdev.wecards.cn/api/zhk/1.0/newTicket/newTicket")
+    Observable<MockBean> mock2();
+
+    @MOCK("http://mdev.wecards.cn/api/zhk/1.0/newTicket/newTicket")
+    @GET("http://mdev.wecards.cn/api/zhk/1.0/newTicket/newTicket")
+    Observable<String> mock3();
 }

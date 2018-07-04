@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +30,11 @@ import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultDisposable;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageRadioResultEvent;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import rx.Observer;
 
 /**
  * Created by 令狐 on 17/8/31.
@@ -141,7 +141,13 @@ public class ImageUploadActivity extends AppCompatActivity {
                         RetrofitHelper.getInstance().getApi(ServerApi.class).postMultiImage(partMap)
                                 .subscribe(new Observer<Boolean>() {
                                     @Override
-                                    public void onCompleted() {
+                                    public void onSubscribe(Disposable d) {
+
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
                                     }
 
                                     @Override
@@ -189,7 +195,13 @@ public class ImageUploadActivity extends AppCompatActivity {
                         RetrofitHelper.getInstance().getApi(ServerApi.class).postSingleImage(part)
                                 .subscribe(new Observer<Boolean>() {
                                     @Override
-                                    public void onCompleted() {
+                                    public void onSubscribe(Disposable d) {
+
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
                                     }
 
                                     @Override

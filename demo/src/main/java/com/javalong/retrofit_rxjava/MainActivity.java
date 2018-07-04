@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.javalong.rr.api.RetrofitHelper;
 import com.javalong.retrofit_rxjava.api.ServerApi;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         CrashHandler.getInstance().init(this);
         setContentView(R.layout.activity_main);
-        RetrofitHelper.getInstance().init(this,"http://rap.kongge.com/mockjsdata/37/");
+        RetrofitHelper.getInstance().init(this, "http://rap.kongge.com/mockjsdata/37/", true);
         RetrofitHelper.getInstance().registerApi(ServerApi.class);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 return new RecyclerView.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false)) {
                 };
             }
+
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
                 Button btRequest = (Button) holder.itemView.findViewById(R.id.btRequest);
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                     case 9:
                         btRequest.setText("downloadFile");
                         break;
+                    case 10:
+                        btRequest.setText("mockdata");
+                        break;
                 }
                 btRequest.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -72,28 +77,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
+
             @Override
             public int getItemCount() {
-                return 10;
+                return 11;
             }
         });
     }
 
 
-
     private void requestDataByIndex(int position) {
-        if(position<8) {
+        if (position < 8) {
             Intent intent = new Intent();
             intent.setClass(this, ResponseActivity.class);
             intent.putExtra("position", position);
             startActivity(intent);
-        }else if(position==8){
+        } else if (position == 8) {
             Intent intent = new Intent();
             intent.setClass(this, ImageUploadActivity.class);
             startActivity(intent);
-        } else {
+        } else if (position == 9) {
             Intent intent = new Intent();
             intent.setClass(this, DownloadActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent();
+            intent.setClass(this, MockDataActivity.class);
             startActivity(intent);
         }
     }

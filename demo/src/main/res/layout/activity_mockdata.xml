@@ -4,17 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <EditText
-        android:id="@+id/et_url"
+    <TextView
+        android:id="@+id/tvResponse"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入下载文件地址" />
-
+        android:padding="10dp"
+        android:layout_height="200dp" />
     <Button
-        android:id="@+id/bt_down"
+        android:id="@+id/btMock1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="下载" />
+        android:text="mock1" />
+    <Button
+        android:id="@+id/btMock2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="mock2" />
+    <Button
+        android:id="@+id/btMock3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="mock3" />
+
 
 </LinearLayout>
