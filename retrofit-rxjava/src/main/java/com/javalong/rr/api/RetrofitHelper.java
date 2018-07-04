@@ -5,9 +5,9 @@ import android.content.Context;
 
 import com.javalong.rr.lib.TWGsonConverterFactory;
 import com.javalong.rr.lib.TWInterceptor;
-import com.javalong.rr.lib.TWJavaCallAdapterFactory;
 
 import java.io.File;
+import java.lang.reflect.Proxy;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -25,6 +25,7 @@ import javax.net.ssl.X509TrustManager;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * Created by javalong on 2016/5/29.
@@ -39,6 +40,8 @@ public class RetrofitHelper {
     private Context mContext;
     private Retrofit mRetrofit;
     private TWInterceptor mInterceptor;
+    private boolean needMock = false;
+
     public static RetrofitHelper getInstance() {
         if (instance == null) {
             synchronized (RetrofitHelper.class) {
@@ -53,14 +56,15 @@ public class RetrofitHelper {
     /**
      * 启动后初始化
      */
-    public void init(Context context, String baseUrl) {
+    public void init(Context context, String baseUrl, boolean needMock) {
         BASE_URL = baseUrl;
         mContext = context;
         initDefaultOkHttpClient();
         apiMap = new HashMap<>();
+        this.needMock = needMock;
         mRetrofit = new Retrofit.Builder().baseUrl(BASE_URL).
                 addConverterFactory(TWGsonConverterFactory.create()).
-                addCallAdapterFactory(TWJavaCallAdapterFactory.create()).
+                addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
                 client(mOkHttpClient).
                 build();
     }
@@ -69,18 +73,18 @@ public class RetrofitHelper {
     /**
      * 自定义OkHttpClient
      */
-    public void init(Context context, String baseUrl,OkHttpClient client) {
+    public void init(Context context, String baseUrl, OkHttpClient client, boolean needMock) {
         mOkHttpClient = client;
-        init(context,baseUrl);
+        init(context, baseUrl, needMock);
     }
 
 
     /**
      * 自定义Interceptor
      */
-    public void init(Context context, String baseUrl,TWInterceptor interceptor) {
+    public void init(Context context, String baseUrl, TWInterceptor interceptor, boolean needMock) {
         mInterceptor = interceptor;
-        init(context,baseUrl);
+        init(context, baseUrl, needMock);
     }
 
     /**
@@ -92,7 +96,11 @@ public class RetrofitHelper {
         }
         if (cls != null && !apiMap.containsKey(cls)) {
             T api = mRetrofit.create(cls);
-            apiMap.put(cls, api);
+            if (needMock) {
+                apiMap.put(cls, Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{cls}, new MockHandler(mRetrofit, mContext, api)));
+            } else {
+                apiMap.put(cls, api);
+            }
         }
     }
 
@@ -149,7 +157,7 @@ public class RetrofitHelper {
 
                         // 指定缓存路径,缓存大小100Mb
                         Cache cache = new Cache(new File(mContext.getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
-                        if(mInterceptor==null){
+                        if (mInterceptor == null) {
                             mInterceptor = new TWInterceptor();
                         }
                         mOkHttpClient = new OkHttpClient.Builder().

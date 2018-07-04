@@ -1,5 +1,7 @@
 package com.javalong.rr.lib;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 
