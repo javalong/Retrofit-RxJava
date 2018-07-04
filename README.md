@@ -30,7 +30,7 @@ blog:http://www.jianshu.com/p/17e3e3102c1f
     Step 2. Add the dependency
    ```gradle
       dependencies {
-      	        implementation 'com.github.javalong:Retrofit-RxJava:v2.0.3'
+      	        implementation 'com.github.javalong:Retrofit-RxJava:v2.0.4'
       	}
    ```
 
