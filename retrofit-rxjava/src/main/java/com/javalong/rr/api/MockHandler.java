@@ -12,11 +12,14 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.Request;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,7 +54,9 @@ public class MockHandler<T> implements InvocationHandler {
                 } else {
                     //认为是在assets中
                     String response = readAssets(mock.value());
-                    Object obj = retrofit.nextCallAdapter(null, method.getGenericReturnType(), method.getAnnotations()).adapt(new MockCall(response));
+
+                    Object responseObj = retrofit.nextResponseBodyConverter(null, getReturnTye(method), method.getAnnotations()).convert(ResponseBody.create(MediaType.parse("application/json"), response));
+                    Object obj = retrofit.nextCallAdapter(null, method.getGenericReturnType(), method.getAnnotations()).adapt(new MockCall(responseObj));
                     return obj;
                 }
             }
@@ -59,6 +64,10 @@ public class MockHandler<T> implements InvocationHandler {
             //如果method有mock注解，就处理下，如果没有，就直接调用后返回
             return method.invoke(api, args);
         }
+    }
+
+    private Type getReturnTye(Method method) {
+        return ((ParameterizedType) (method.getGenericReturnType())).getActualTypeArguments()[0];
     }
 
     private void preLoadServiceMethod(Method method, String relativeUrl) {
@@ -69,23 +78,6 @@ public class MockHandler<T> implements InvocationHandler {
             Field field = serviceMethod.getClass().getDeclaredField("relativeUrl");
             field.setAccessible(true);
             field.set(serviceMethod, relativeUrl);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void modifyAnnotationValue(Annotation annotation, String value) {
-        try {
-            InvocationHandler invocationHandler = Proxy.getInvocationHandler(annotation);
-            // 获取 AnnotationInvocationHandler 的 memberValues 字段
-            Field declaredField = invocationHandler.getClass().getDeclaredField("memberValues");
-            // 因为这个字段事 private final 修饰，所以要打开权限
-            declaredField.setAccessible(true);
-            // 获取 memberValues
-            Map memberValues = null;
-            memberValues = (Map) declaredField.get(invocationHandler);
-            // 修改 value 属性值
-            memberValues.put("value", value);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,11 +105,11 @@ public class MockHandler<T> implements InvocationHandler {
 }
 
 
-class MockCall<T> implements Call<T> {
+class MockCall<R> implements Call<R> {
 
-    String data;
+    Object data;
 
-    public MockCall(String data) {
+    public MockCall(Object data) {
         this.data = data;
     }
 
@@ -126,12 +118,12 @@ class MockCall<T> implements Call<T> {
     }
 
     @Override
-    public Response<T> execute() throws IOException {
+    public Response<R> execute() throws IOException {
         return getResponse();
     }
 
     @Override
-    public void enqueue(Callback<T> callback) {
+    public void enqueue(Callback<R> callback) {
         callback.onResponse(null, getResponse());
     }
 
@@ -151,7 +143,7 @@ class MockCall<T> implements Call<T> {
     }
 
     @Override
-    public Call<T> clone() {
+    public Call<R> clone() {
         return this;
     }
 
