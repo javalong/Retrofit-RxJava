@@ -18,10 +18,10 @@ public class ResponseMessageBean implements Serializable {
     public Integer errorCode = 200;//默认为200  是成功
 
 
-    public static final String ERROR_CODE="errorCode";
+    public static final String ERROR_CODE="code";
     public static final String MORE_INFO="moreInfo";
     public static final String DATA="data";
-    public static final String ERROR="error";
+    public static final String ERROR="msg";
 
     /**
      * @return

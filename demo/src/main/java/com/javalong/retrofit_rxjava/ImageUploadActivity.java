@@ -34,6 +34,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
@@ -137,7 +138,6 @@ public class ImageUploadActivity extends AppCompatActivity {
 
                             partMap.put("key" + i, requestBodyWithProgress);
                         }
-
                         RetrofitHelper.getInstance().getApi(ServerApi.class).postMultiImage(partMap)
                                 .subscribe(new Observer<Boolean>() {
                                     @Override
