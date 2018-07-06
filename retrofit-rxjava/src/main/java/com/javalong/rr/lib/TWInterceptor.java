@@ -90,7 +90,7 @@ public class TWInterceptor implements Interceptor {
             }
         } else {
             onFailed(msgBean);
-            throw new RuntimeException(new HttpError(msgBean, msgBean.error));
+            throw new HttpError(msgBean, msgBean.error);
         }
     }
 
