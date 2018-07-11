@@ -64,8 +64,8 @@ public class RetrofitHelper {
         apiMap = new HashMap<>();
         this.needMock = needMock;
         mRetrofit = new Retrofit.Builder().baseUrl(BASE_URL).
-                addConverterFactory(GsonConverterFactory.create()).
                 addConverterFactory(ScalarsConverterFactory.create()).
+                addConverterFactory(GsonConverterFactory.create()).
                 addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
                 client(mOkHttpClient).
                 build();
