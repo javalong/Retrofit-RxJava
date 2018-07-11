@@ -3,8 +3,6 @@ package com.javalong.rr.api;
 
 import android.content.Context;
 
-import com.javalong.rr.lib.BuildConfig;
-import com.javalong.rr.lib.TWGsonConverterFactory;
 import com.javalong.rr.lib.TWInterceptor;
 
 import java.io.File;
@@ -27,6 +25,8 @@ import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by javalong on 2016/5/29.
@@ -64,7 +64,8 @@ public class RetrofitHelper {
         apiMap = new HashMap<>();
         this.needMock = needMock;
         mRetrofit = new Retrofit.Builder().baseUrl(BASE_URL).
-                addConverterFactory(TWGsonConverterFactory.create()).
+                addConverterFactory(GsonConverterFactory.create()).
+                addConverterFactory(ScalarsConverterFactory.create()).
                 addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
                 client(mOkHttpClient).
                 build();

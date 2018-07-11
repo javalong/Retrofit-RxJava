@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "2.1.5"
+version = "2.1.6"
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -34,5 +34,6 @@ dependencies {
     api "io.reactivex.rxjava2:rxjava:2.1.0"
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 }
