@@ -66,7 +66,7 @@ public class TWInterceptor implements Interceptor {
         try {
             BufferedSource bufferedSource = originalResponse.body().source();
             MediaType contentType = originalResponse.body().contentType();
-            if (contentType.subtype() != null && (contentType.subtype().contains("text/plain") || contentType.subtype().contains("application/json"))) {
+            if (contentType.subtype() != null && (contentType.subtype().contains("plain") || contentType.subtype().contains("json"))) {
                 jsonString = bufferedSource.readString(Charset.forName("utf-8"));
             } else {
                 //请求文件，就直接返回ResponseBody;
