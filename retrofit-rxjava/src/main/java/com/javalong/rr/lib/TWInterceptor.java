@@ -66,13 +66,13 @@ public class TWInterceptor implements Interceptor {
         try {
             BufferedSource bufferedSource = originalResponse.body().source();
             MediaType contentType = originalResponse.body().contentType();
-            if ("octet-stream".equals(contentType.subtype())) {
+            if (contentType.subtype() != null && (contentType.subtype().contains("text/plain") || contentType.subtype().contains("application/json"))) {
+                jsonString = bufferedSource.readString(Charset.forName("utf-8"));
+            } else {
                 //请求文件，就直接返回ResponseBody;
                 return originalResponse.newBuilder().
                         body(ResponseBody.create(contentType, originalResponse.body().contentLength(), bufferedSource)).
                         build();
-            } else {
-                jsonString = bufferedSource.readString(Charset.forName("utf-8"));
             }
         } catch (Exception e) {
             e.printStackTrace();
