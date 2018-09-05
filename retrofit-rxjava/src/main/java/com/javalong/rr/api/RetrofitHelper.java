@@ -66,7 +66,7 @@ public class RetrofitHelper {
         mRetrofit = new Retrofit.Builder().baseUrl(BASE_URL).
                 addConverterFactory(ScalarsConverterFactory.create()).
                 addConverterFactory(GsonConverterFactory.create()).
-                addCallAdapterFactory(RxJava2CallAdapterFactory.create()).
+                addCallAdapterFactory(CustomRxJava2CallAdapterFactory.create()).
                 client(mOkHttpClient).
                 build();
     }
@@ -158,7 +158,7 @@ public class RetrofitHelper {
                         };
 
                         // 指定缓存路径,缓存大小100Mb
-                        //Cache cache = new Cache(new File(mContext.getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
+                        Cache cache = new Cache(new File(mContext.getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
                         if (mInterceptor == null) {
                             mInterceptor = new TWInterceptor();
                         }
@@ -168,7 +168,7 @@ public class RetrofitHelper {
                                 connectTimeout(30, TimeUnit.SECONDS).
                                 sslSocketFactory(sslContext.getSocketFactory()).
                                 hostnameVerifier(DO_NOT_VERIFY).
-                               // cache(cache).
+                                cache(cache).
                                 build();
                     } catch (Exception e) {
                         e.printStackTrace();
