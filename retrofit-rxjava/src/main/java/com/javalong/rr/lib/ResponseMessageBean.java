@@ -16,7 +16,7 @@ public class ResponseMessageBean implements Serializable {
     public Object data = null;
     public String error = null;
     public Integer errorCode = 200;//默认为200  是成功
-
+    public Boolean success = false;
 
     public static final String ERROR_CODE="code";
     public static final String MORE_INFO="moreInfo";
@@ -41,6 +41,9 @@ public class ResponseMessageBean implements Serializable {
         if(jsonObject==null)return null;
         ResponseMessageBean responseMessage = new ResponseMessageBean();
         try {
+            if (jsonObject.has("success")) {
+                responseMessage.success = jsonObject.getBoolean("success");
+            }
             if (jsonObject.has(ERROR)) {
                 responseMessage.error = jsonObject.getString(ERROR);
             }

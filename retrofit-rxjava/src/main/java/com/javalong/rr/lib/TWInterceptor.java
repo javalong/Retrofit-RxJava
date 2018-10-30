@@ -66,7 +66,7 @@ public class TWInterceptor implements Interceptor {
         try {
             BufferedSource bufferedSource = originalResponse.body().source();
             MediaType contentType = originalResponse.body().contentType();
-            if (contentType.subtype() != null && (contentType.subtype().contains("plain") || contentType.subtype().contains("json")||contentType.subtype().contains("html"))) {
+            if (contentType.subtype() != null && (contentType.subtype().contains("plain") || contentType.subtype().contains("json") || contentType.subtype().contains("html"))) {
                 jsonString = bufferedSource.readString(Charset.forName("utf-8"));
             } else {
                 //请求文件，就直接返回ResponseBody;
@@ -82,7 +82,7 @@ public class TWInterceptor implements Interceptor {
         }
         ResponseMessageBean msgBean = ResponseMessageBean.analyseReponse(jsonString);
         if (msgBean == null) return onSuccess(originalResponse, msgBean.data.toString());
-        if (msgBean != null && (msgBean.errorCode == 200)) {
+        if (msgBean != null && (msgBean.errorCode == 200 || msgBean.success)) {
             if (msgBean.data != null) {
                 return onSuccess(originalResponse, msgBean.data.toString());
             } else {
