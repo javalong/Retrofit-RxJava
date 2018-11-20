@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 /**
  * @author ygh
- *         2015/4/27
- *         <p/>
- *         请求数据内容
+ * 2015/4/27
+ * <p/>
+ * 请求数据内容
  */
 public class ResponseMessageBean implements Serializable {
     public Object moreInfo = null;
@@ -18,10 +18,10 @@ public class ResponseMessageBean implements Serializable {
     public Integer errorCode = 200;//默认为200  是成功
     public Boolean success = false;
 
-    public static final String ERROR_CODE="code";
-    public static final String MORE_INFO="moreInfo";
-    public static final String DATA="data";
-    public static final String ERROR="msg";
+    public static final String ERROR_CODE = "code";
+    public static final String MORE_INFO = "moreInfo";
+    public static final String DATA = "data";
+    public static final String ERROR = "msg";
 
     /**
      * @return
@@ -38,20 +38,20 @@ public class ResponseMessageBean implements Serializable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(jsonObject==null)return null;
+        if (jsonObject == null) return null;
         ResponseMessageBean responseMessage = new ResponseMessageBean();
         try {
             if (jsonObject.has("success")) {
                 responseMessage.success = jsonObject.getBoolean("success");
+            }
+            if (jsonObject.has(DATA)) {
+                responseMessage.data = jsonObject.get(DATA);
             }
             if (jsonObject.has(ERROR)) {
                 responseMessage.error = jsonObject.getString(ERROR);
             }
             if (jsonObject.has(ERROR_CODE)) {
                 responseMessage.errorCode = jsonObject.getInt(ERROR_CODE);
-            }
-            if (jsonObject.has(DATA)) {
-                responseMessage.data = jsonObject.get(DATA);
             }
             if (jsonObject.has(MORE_INFO)) {
                 responseMessage.moreInfo = jsonObject.get(MORE_INFO);
